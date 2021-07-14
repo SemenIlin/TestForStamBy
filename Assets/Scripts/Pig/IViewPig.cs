@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IViewFarmer
+public interface IViewPig 
 {
     void GetView(Vector2 direction);
 }

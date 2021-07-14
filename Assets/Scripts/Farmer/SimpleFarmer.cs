@@ -1,8 +1,8 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CapsuleCollider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class DirtyFarmer : MonoBehaviour, IViewFarmer
+[RequireComponent(typeof(CapsuleCollider2D))]
+public class SimpleFarmer : MonoBehaviour, IViewFarmer
 {
     [Header("Horizontal orientation")]
     [SerializeField] Sprite _rightMove;
@@ -17,7 +17,7 @@ public class DirtyFarmer : MonoBehaviour, IViewFarmer
     [SerializeField] Vector2 _verticalColliderOffset;
 
     CapsuleCollider2D _capsule;
-    SpriteRenderer _sprite;     
+    SpriteRenderer _sprite;
 
     void Start()
     {
@@ -31,7 +31,7 @@ public class DirtyFarmer : MonoBehaviour, IViewFarmer
             SetHorizontalOrientation();
             SetVerticalOrientation();
             ChangeSprite(direction);
-        }        
+        }
     }
     void ChangeSprite(Vector2 direction)
     {
