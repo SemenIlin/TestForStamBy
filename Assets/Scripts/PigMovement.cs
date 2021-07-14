@@ -37,7 +37,7 @@ public class PigMovement : MonoBehaviour
     Vector2 _previousDirection;
     Vector2 _currentIndexDirection;
     Vector2 _previousIndexDirection;
-    Vector3 _directonal;
+    Vector3 _directional;
 
     Joystick _joystick;
     Transform _pointForBombaCreate;
@@ -64,13 +64,8 @@ public class PigMovement : MonoBehaviour
         {
             ChangeDirection(_joystick.Direction);
 
-            _directonal = new Vector3(_direction.x, _direction.y, 0);
-            _rb.MovePosition(transform.position + _directonal * (Time.deltaTime * _speed));
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            _directonal = Vector3.zero;
+            _directional = new Vector3(_direction.x, _direction.y, 0);
+            _rb.MovePosition(transform.position + _directional * (Time.deltaTime * _speed));
         }
     }
 
@@ -78,10 +73,11 @@ public class PigMovement : MonoBehaviour
 
     void ChangeDirection(Vector2 direction)
     {
-        if(Mathf.Pow(direction.x - direction.y, 2) < _offsetForChangeDirection)
-        {
-            return;
-        }
+        //if(Mathf.Pow(direction.x - direction.y, 2) < _offsetForChangeDirection)
+        //{
+        //    _directional = Vector2.zero;
+        //    return;
+        //}
 
         if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
         {
