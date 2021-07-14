@@ -50,7 +50,7 @@ public class PigMovement : MonoBehaviour
         _capsule = GetComponent<CapsuleCollider2D>();
         _sprite = GetComponent<SpriteRenderer>();
 
-        _pointForBombaCreate = _verticalPigDownPointForBombaCreate;
+        _pointForBombaCreate = _horizontalPigRightPointForBombaCreate;
     }
 
     void Update()
@@ -66,7 +66,11 @@ public class PigMovement : MonoBehaviour
 
             _directional = new Vector3(_direction.x, _direction.y, 0);
             _rb.MovePosition(transform.position + _directional * (Time.deltaTime * _speed));
+
+            Debug.Log(_pointForBombaCreate);
         }
+
+        
     }
 
     public Transform PointForBombaCreate => _pointForBombaCreate;
@@ -123,7 +127,7 @@ public class PigMovement : MonoBehaviour
             _sprite.sprite = _leftMove;
             _pointForBombaCreate = _horizontalPigLeftPointForBombaCreate;
         }
-        else if(direction.x >= 0 && direction.y == 0)
+        else if(direction.x > 0 && direction.y == 0)
         {
             _sprite.sprite = _rightMove;
             _pointForBombaCreate = _horizontalPigRightPointForBombaCreate;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BombaCreator : MonoBehaviour
 {    
-    [SerializeField] Bomba _bombaPrefab;
+    [SerializeField] GameObject _bombaPrefab;
 
     PigMovement _pigMovement;
     private void Start()
@@ -11,7 +11,7 @@ public class BombaCreator : MonoBehaviour
     }
     public void CreateBomba()
     {
-        var bomba = Instantiate(_bombaPrefab.gameObject);
+        var bomba = Instantiate(_bombaPrefab);
         bomba.transform.position = _pigMovement.PointForBombaCreate.position;
     }
 }
