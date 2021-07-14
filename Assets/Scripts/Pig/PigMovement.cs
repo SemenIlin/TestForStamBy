@@ -53,11 +53,10 @@ public class PigMovement : MonoBehaviour
             _currentIndexDirection.x = 0 <= _direction.x && 0 <= _previousDirection.x ? 1 : -1;
             _direction.y = 0;
 
-            //if (_previousDirection.y != 0)
-            //{
-            //    ChangeSprite(_direction);
-            //    SetHorizontalOrientation();
-            //}
+            if (_previousDirection.y != 0)
+            {
+                _pig.GetCurrentView().GetView(_direction);
+            }
         }
         else
         {
@@ -67,11 +66,10 @@ public class PigMovement : MonoBehaviour
             _direction.x = 0;
             _direction.y = direction.y;
             _currentIndexDirection.y = 0 <= _direction.y && 0 <= _previousDirection.y ? 1 : -1;
-            //if (_previousDirection.x != 0)
-            //{
-            //    ChangeSprite(_direction);
-            //    SetVerticalOrientation();
-            //}
+            if (_previousDirection.x != 0)
+            {
+                _pig.GetCurrentView().GetView(_direction);
+            }
         }
 
         if (_previousIndexDirection.x != _currentIndexDirection.x ||
@@ -81,6 +79,4 @@ public class PigMovement : MonoBehaviour
             _pig.GetCurrentView().GetView(_direction);
         }
     }
-
-    public Transform PointForBombaCreate { get; set; }//=> _pointForBombaCreate;    
 }

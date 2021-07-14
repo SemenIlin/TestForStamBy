@@ -4,14 +4,14 @@ public class BombaCreator : MonoBehaviour
 {    
     [SerializeField] GameObject _bombaPrefab;
 
-    PigMovement _pigMovement;
+    IViewPig _pigView;
     private void Start()
     {
-        _pigMovement = GetComponent<PigMovement>();
+        _pigView = GetComponent<Pig>().GetCurrentView();
     }
     public void CreateBomba()
     {
         var bomba = Instantiate(_bombaPrefab);
-        bomba.transform.position = _pigMovement.PointForBombaCreate.position;
+        bomba.transform.position = _pigView.PointForBombaCreate.position;
     }
 }

@@ -6,11 +6,9 @@ public class Pig : MonoBehaviour
     [SerializeField] SimplePig _simple;
     PigView _pigView;
 
-    List<IViewPig> _views; 
     void Start()
     {
         _pigView = PigView.Simple;
-        _views.Add(_simple);
     }
 
     public PigView PigView => _pigView;
@@ -26,6 +24,7 @@ public class Pig : MonoBehaviour
                 return _simple;
         }
     }
+  
 
     public void SetNewPigView(PigView view)
     {

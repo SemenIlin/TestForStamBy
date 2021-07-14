@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -27,17 +25,16 @@ public class SimplePig : MonoBehaviour, IViewPig
     SpriteRenderer _sprite;
     CapsuleCollider2D _capsule;
 
-    Vector2 _direction;
-    Vector2 _previousDirection;
-    Vector2 _currentIndexDirection;
-    Vector2 _previousIndexDirection;
     Transform _pointForBombaCreate;
+
 
     void Start()
     {
+        _pointForBombaCreate = _horizontalPigLeftPointForBombaCreate;
         _capsule = GetComponent<CapsuleCollider2D>();
         _sprite = GetComponent<SpriteRenderer>();
-    }    
+    }
+    public Transform PointForBombaCreate => _pointForBombaCreate;
 
     public void GetView(Vector2 direction)
     {
