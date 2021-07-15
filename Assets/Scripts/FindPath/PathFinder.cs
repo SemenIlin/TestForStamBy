@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PathFinder : MonoBehaviour
 {
-    [SerializeField] float _timeForNewFinderPath;
     [SerializeField] LayerMask _solidLayer;
     List<Vector2> _pathToTarget;
 
@@ -13,26 +12,14 @@ public class PathFinder : MonoBehaviour
     List<Node> _waitingNodes = new List<Node>();
     Transform _target;
 
-    float _timer;
-
-    private void Start()
+    private void Awake()
     {
         _target = FindObjectOfType<Pig>().transform;
         _pathToTarget = GetPath(_target.position);
     }
-
-    void Update()
-    {
-        _timer += Time.deltaTime;
-        if (_timer > _timeForNewFinderPath)
-        {
-            _pathToTarget = GetPath(_target.position);
-            _timer = 0;
-        }
-    }
-
     public List<Vector2> PathToTarget => _pathToTarget;
 
+    public Transform Target => _target;
     public List<Node> FreeNodes => _freeNodes;
     public List<Vector2> GetPath(Vector2 target)
     {

@@ -125,8 +125,8 @@ TextureImporter:
         y: 1362
         width: 443
         height: 934
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.4841591, y: 0.28211063}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -146,8 +146,8 @@ TextureImporter:
         y: 1356
         width: 460
         height: 940
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5228834, y: 0.2835013}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +163,12 @@ TextureImporter:
       name: farmer_3
       rect:
         serializedVersion: 2
-        x: 519
+        x: 507
         y: 200
         width: 597
         height: 943
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.64105636, y: 0.29535273}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -188,8 +188,8 @@ TextureImporter:
         y: 212
         width: 484
         height: 898
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.47100225, y: 0.2499317}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

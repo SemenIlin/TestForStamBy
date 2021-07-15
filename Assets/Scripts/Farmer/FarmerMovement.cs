@@ -4,65 +4,30 @@ using UnityEngine;
 
 public class FarmerMovement : MonoBehaviour
 {
-    private List<Vector2> PathToBomberMan = new List<Vector2>();
-    private List<Vector2> RandomPath = new List<Vector2>();
-    private List<Vector2> CurrentPath = new List<Vector2>();
-    private PathFinder PathFinder;
+    [SerializeField] Farmer _farmer;
+    [SerializeField] float _moveSpeed;
+
+    private List<Vector2> _pathToBomberMan = new List<Vector2>();
+    private PathFinder _pathFinder;
     private bool isMoving;
-    private bool SeeBomber;
 
-    public GameObject DeathEffect;
-    public float MoveSpeed;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        PathFinder = GetComponent<PathFinder>();
-        ReCalculatePath();
+        _pathFinder = GetComponent<PathFinder>();
+        _pathToBomberMan = _pathFinder.GetPath(_pathFinder.Target.position);
         isMoving = true;
     }
 
-    public void ReCalculatePath()
-    {
-        PathToBomberMan = PathFinder.PathToTarget;
-
-        if (PathToBomberMan.Count == 0)
-        {
-            SeeBomber = false;
-            if (!SeeBomber)
-            {
-                var r = Random.Range(0, PathFinder.FreeNodes.Count);
-                RandomPath = PathFinder.GetPath(PathFinder.FreeNodes[r].Position);
-                CurrentPath = RandomPath;
-                print(CurrentPath.Count);
-            }
-
-        }
-        else
-        {
-            CurrentPath = PathToBomberMan;
-            SeeBomber = true;
-        }
-    }
-
-    public void Damage(int source)
-    {
-        if (source == 1)
-        {
-            Instantiate(DeathEffect, transform.position, transform.rotation);
-            Destroy(gameObject);
-        }
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (CurrentPath.Count == 0 && Vector2.Distance(transform.position, BomberMan.transform.position) > 0.5f)
+        if (_pathToBomberMan.Count == 0 && Vector2.Distance(transform.position, _pathFinder.Target.transform.position) > 0.5f)
         {
-            ReCalculatePath();
+            _pathToBomberMan = _pathFinder.GetPath(_pathFinder.Target.position);
             isMoving = true;
         }
-        if (CurrentPath.Count == 0)
+        if (_pathToBomberMan.Count == 0)
         {
             return;
         }
@@ -70,22 +35,31 @@ public class FarmerMovement : MonoBehaviour
 
         if (isMoving)
         {
-            if (Vector2.Distance(transform.position, CurrentPath[CurrentPath.Count - 1]) > 0.1f)
+            var pointCount = _pathToBomberMan.Count;
+            if (Vector2.Distance(transform.position, _pathToBomberMan[pointCount - 1]) > 0.1f)
             {
-
-                transform.position = Vector2.MoveTowards(transform.position, CurrentPath[CurrentPath.Count - 1], MoveSpeed * Time.deltaTime);
-
+                _farmer.GetCurrentView().GetView(GetDirection(pointCount));
+                transform.position = Vector2.MoveTowards(transform.position, _pathToBomberMan[pointCount - 1], _moveSpeed * Time.deltaTime);
             }
-            if (Vector2.Distance(transform.position, CurrentPath[CurrentPath.Count - 1]) <= 0.1f)
+            else
             {
                 isMoving = false;
             }
         }
         else
         {
-
-            ReCalculatePath();
+            _pathToBomberMan = _pathFinder.GetPath(_pathFinder.Target.position);
             isMoving = true;
         }
+    }
+
+    Vector2 GetDirection(int pointCount)
+    {
+        if (pointCount < 2)
+        {
+            return Vector2.zero;
+        }
+        var result = _pathToBomberMan[pointCount - 2] - _pathToBomberMan[pointCount - 1];
+        return _pathToBomberMan[pointCount - 2] - _pathToBomberMan[pointCount - 1];
     }
 }

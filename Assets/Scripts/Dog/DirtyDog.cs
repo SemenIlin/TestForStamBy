@@ -1,8 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(CapsuleCollider2D))]
-public class DirtyDog : MonoBehaviour, IViewDog
+public class DirtyDog : Dog, IViewDog
 {
     [Header("Horizontal orientation")]
     [SerializeField] Sprite _rightMove;
@@ -16,14 +14,6 @@ public class DirtyDog : MonoBehaviour, IViewDog
     [SerializeField] Vector2 _verticalColliderSize;
     [SerializeField] Vector2 _verticalColliderOffset;
 
-    CapsuleCollider2D _capsule;
-    SpriteRenderer _sprite;
-
-    void Start()
-    {
-        _capsule = GetComponent<CapsuleCollider2D>();
-        _sprite = GetComponent<SpriteRenderer>();
-    }
     public void GetView(Vector2 direction)
     {
         if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))

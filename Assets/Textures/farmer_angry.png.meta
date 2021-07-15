@@ -118,12 +118,12 @@ TextureImporter:
       name: farmer_angry_0
       rect:
         serializedVersion: 2
-        x: 36
+        x: 34
         y: 874
         width: 739
         height: 763
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.2953296, y: 0.2757698}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -143,8 +143,8 @@ TextureImporter:
         y: 867
         width: 767
         height: 764
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.7198286, y: 0.27281788}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -164,8 +164,8 @@ TextureImporter:
         y: 43
         width: 372
         height: 784
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5199962, y: 0.2849386}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -185,8 +185,8 @@ TextureImporter:
         y: 41
         width: 359
         height: 783
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5207203, y: 0.25299674}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

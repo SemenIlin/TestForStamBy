@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 6960648424511907095}
   - component: {fileID: 7451874352704729656}
   - component: {fileID: 6139469748679553715}
+  - component: {fileID: 1645999739332058391}
+  - component: {fileID: 8251178110809536070}
   m_Layer: 0
   m_Name: farmer_0
   m_TagString: Farmer
@@ -101,7 +103,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1, y: -2.7}
+  m_Offset: {x: 0, y: -0.5}
   m_Size: {x: 2.19, y: 3.84}
   m_Direction: 0
 --- !u!50 &4862953561994019855
@@ -140,11 +142,11 @@ MonoBehaviour:
   _rightMove: {fileID: -284627385986098231, guid: 3cc76704f4b28be4ca7a7e7811e2e059, type: 3}
   _leftMove: {fileID: -9215070241222095863, guid: 3cc76704f4b28be4ca7a7e7811e2e059, type: 3}
   _horizontalColliderSize: {x: 2.19, y: 3.84}
-  _horizontalColliderOffset: {x: -0.1, y: -2.7}
+  _horizontalColliderOffset: {x: -0.1, y: -0.5}
   _upMove: {fileID: 3191130952945803347, guid: 3cc76704f4b28be4ca7a7e7811e2e059, type: 3}
   _downMove: {fileID: -4697590009104051591, guid: 3cc76704f4b28be4ca7a7e7811e2e059, type: 3}
   _verticalColliderSize: {x: 2.19, y: 3.84}
-  _verticalColliderOffset: {x: 0.8, y: -2.7}
+  _verticalColliderOffset: {x: 0, y: -0.5}
 --- !u!114 &6960648424511907095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,11 +162,11 @@ MonoBehaviour:
   _rightMove: {fileID: -7334331953504848966, guid: 3c26e638d0847f443a8dee98b7e299f9, type: 3}
   _leftMove: {fileID: -5117249517182225887, guid: 3c26e638d0847f443a8dee98b7e299f9, type: 3}
   _horizontalColliderSize: {x: 2.19, y: 3.84}
-  _horizontalColliderOffset: {x: 0.7, y: -2.6}
+  _horizontalColliderOffset: {x: 0, y: -0.5}
   _upMove: {fileID: -3602886567794042455, guid: 3c26e638d0847f443a8dee98b7e299f9, type: 3}
   _downMove: {fileID: -7363812799561630615, guid: 3c26e638d0847f443a8dee98b7e299f9, type: 3}
   _verticalColliderSize: {x: 2.19, y: 3.84}
-  _verticalColliderOffset: {x: 0.25, y: -2.6}
+  _verticalColliderOffset: {x: 0, y: -0.5}
 --- !u!114 &7451874352704729656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,11 +182,11 @@ MonoBehaviour:
   _rightMove: {fileID: 9093268807262632672, guid: 6377d94b8e3b87a40b9e618933a9e5a9, type: 3}
   _leftMove: {fileID: -6113192314060189953, guid: 6377d94b8e3b87a40b9e618933a9e5a9, type: 3}
   _horizontalColliderSize: {x: 2.19, y: 3.84}
-  _horizontalColliderOffset: {x: -1.55, y: -1.84}
+  _horizontalColliderOffset: {x: 0, y: -0.5}
   _upMove: {fileID: 6772319772625878686, guid: 6377d94b8e3b87a40b9e618933a9e5a9, type: 3}
   _downMove: {fileID: -5563435931116900145, guid: 6377d94b8e3b87a40b9e618933a9e5a9, type: 3}
   _verticalColliderSize: {x: 2.19, y: 3.84}
-  _verticalColliderOffset: {x: 0, y: -1.84}
+  _verticalColliderOffset: {x: 0, y: -0.5}
 --- !u!114 &6139469748679553715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +199,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48fff0620a9157944afc552543089bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeForNewFinderPath: 2
   _solidLayer:
     serializedVersion: 2
     m_Bits: 448
+--- !u!114 &1645999739332058391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4862953561994019852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39432822921999b48a46d78341b7fd8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _farmer: {fileID: 8251178110809536070}
+  _moveSpeed: 1
+--- !u!114 &8251178110809536070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4862953561994019852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52609b6130737e84cad0804ec8f8fb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _simple: {fileID: 5948809270246899950}
+  _angry: {fileID: 7451874352704729656}
+  _dirty: {fileID: 6960648424511907095}
