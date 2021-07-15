@@ -1,23 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FarmerMovement : MonoBehaviour
+public class DogMovement : MonoBehaviour
 {
-    [SerializeField] Farmer _farmer;
+    [SerializeField] Dog _dog;
     [SerializeField] float _moveSpeed;
 
     List<Vector2> _pathToBomberMan = new List<Vector2>();
     PathFinder _pathFinder;
-    bool isMoving;
-
-
+    bool _isMoving;
 
     void Start()
     {
         _pathFinder = GetComponent<PathFinder>();
         _pathToBomberMan = _pathFinder.GetPath(_pathFinder.Target.position);
-        isMoving = true;
+        _isMoving = true;
     }
 
     void Update()
@@ -25,7 +22,7 @@ public class FarmerMovement : MonoBehaviour
         if (_pathToBomberMan.Count == 0 && Vector2.Distance(transform.position, _pathFinder.Target.transform.position) > 0.5f)
         {
             _pathToBomberMan = _pathFinder.GetPath(_pathFinder.Target.position);
-            isMoving = true;
+            _isMoving = true;
         }
         if (_pathToBomberMan.Count == 0)
         {
@@ -33,7 +30,7 @@ public class FarmerMovement : MonoBehaviour
         }
 
 
-        if (isMoving)
+        if (_isMoving)
         {
             var pointCount = _pathToBomberMan.Count;
             if (Vector2.Distance(transform.position, _pathToBomberMan[pointCount - 1]) > 0.1f)
@@ -42,14 +39,14 @@ public class FarmerMovement : MonoBehaviour
             }
             else
             {
-                _farmer.GetCurrentView().GetView(GetDirection(pointCount));
-                isMoving = false;
+                _dog.GetCurrentView().GetView(GetDirection(pointCount));
+                _isMoving = false;
             }
         }
         else
         {
             _pathToBomberMan = _pathFinder.GetPath(_pathFinder.Target.position);
-            isMoving = true;
+            _isMoving = true;
         }
     }
 

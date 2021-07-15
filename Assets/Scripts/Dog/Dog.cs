@@ -1,14 +1,45 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(CapsuleCollider2D))]
-public class Dog : MonoBehaviour
+public class Dog : MonoBehaviour, IEnemy
 {
-    protected CapsuleCollider2D _capsule;
-    protected SpriteRenderer _sprite;
+    const int QUANTITY_STATES = 3;
+    [SerializeField] SimpleDog _simple;
+    [SerializeField] AngryDog _angry;
+    [SerializeField] DirtyDog _dirty;
+
+    DogView _dogView;
+    
     void Start()
     {
-        _capsule = GetComponent<CapsuleCollider2D>();
-        _sprite = GetComponent<SpriteRenderer>();
+        _dogView = DogView.Simple;
+    }
+
+    public DogView DogView => _dogView;
+
+    public IViewDog GetCurrentView()
+    {
+        switch (_dogView)
+        {
+            case DogView.Simple:
+                return _simple;
+
+            case DogView.Angry:
+                return _angry;
+
+            case DogView.Dirty:
+                return _dirty;
+
+            default:
+                return _simple;
+        }
+    }
+    public void SetNextView()
+    {
+        _dogView += 1;
+        _dogView = (DogView)Mathf.Clamp((int)_dogView, 1, QUANTITY_STATES);
+    }
+    public void SetNewDogView(DogView view)
+    {
+        _dogView = view;
     }
 }

@@ -1,5 +1,5 @@
 using UnityEngine;
-public class SimpleDog : Dog, IViewDog
+public class SimpleDog : ViewDog, IViewDog
 {
     [Header("Horizontal orientation")]
     [SerializeField] Sprite _rightMove;
@@ -15,30 +15,29 @@ public class SimpleDog : Dog, IViewDog
    
     public void GetView(Vector2 direction)
     {
-        if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
-        {
-            SetHorizontalOrientation();
-            SetVerticalOrientation();
-            ChangeSprite(direction);
-        }
+        ChangeSprite(direction);        
     }
     void ChangeSprite(Vector2 direction)
     {
         if (direction.x < 0)
         {
+            SetHorizontalOrientation();
             _sprite.sprite = _leftMove;
         }
         else if (direction.x > 0 && direction.y == 0)
         {
+            SetHorizontalOrientation();
             _sprite.sprite = _rightMove;
         }
 
         else if (direction.y < 0)
         {
+            SetVerticalOrientation();
             _sprite.sprite = _downMove;
         }
         else if (direction.y > 0)
         {
+            SetVerticalOrientation();
             _sprite.sprite = _upMove;
         }
     }

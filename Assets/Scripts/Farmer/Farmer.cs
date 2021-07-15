@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class Farmer : MonoBehaviour
+public class Farmer : MonoBehaviour, IEnemy
 {
+    const int QUANTITY_STATES = 3;
 
     [SerializeField] SimpleFarmer _simple;
     [SerializeField] AngryFarmer _angry;
@@ -35,5 +36,11 @@ public class Farmer : MonoBehaviour
     public void SetNewFarmerView(FarmerView view)
     {
         _farmerView = view;
+    }
+
+    public void SetNextView()
+    {
+        _farmerView += 1;
+        _farmerView = (FarmerView)Mathf.Clamp((int)_farmerView, 1, QUANTITY_STATES);
     }
 }

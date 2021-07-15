@@ -38,6 +38,8 @@ public class Bomba : MonoBehaviour
         _animator.SetTrigger("IsBoom");
         _timerText.enabled = false;
         _radiusBoom.ObjectsForDestory.ForEach(bomba => bomba.SetActive(false));
+
+        _radiusBoom.EnemyUnderBoom.ForEach(enemy => enemy.GetComponent<IEnemy>().SetNextView());
     }
 
     public void Disactive()
