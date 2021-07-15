@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2257129539283982954}
   - component: {fileID: 2257129539283982955}
   - component: {fileID: 8367140498711796264}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Kust
   m_TagString: Kust
   m_Icon: {fileID: 0}
