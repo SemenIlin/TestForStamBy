@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class SimpleFarmer : ViewFarmer, IViewFarmer
 {
+    [SerializeField] float _speedMultiplicator;
+
     [Header("Horizontal orientation")]
     [SerializeField] Sprite _rightMove;
     [SerializeField] Sprite _leftMove;
@@ -13,6 +15,8 @@ public class SimpleFarmer : ViewFarmer, IViewFarmer
     [SerializeField] Sprite _downMove;
     [SerializeField] Vector2 _verticalColliderSize;
     [SerializeField] Vector2 _verticalColliderOffset;
+
+    public float SpeedMultiplicator => _speedMultiplicator;
 
     public void GetView()
     {

@@ -1,6 +1,8 @@
 using UnityEngine;
 public class SimpleDog : ViewDog, IViewDog
 {
+    [SerializeField] float _speedMultiplicator = 1.2f;
+
     [Header("Horizontal orientation")]
     [SerializeField] Sprite _rightMove;
     [SerializeField] Sprite _leftMove;
@@ -12,6 +14,8 @@ public class SimpleDog : ViewDog, IViewDog
     [SerializeField] Sprite _downMove;
     [SerializeField] Vector2 _verticalColliderSize;
     [SerializeField] Vector2 _verticalColliderOffset;
+
+    public float SpeedMultiplicator => _speedMultiplicator;
 
     public void GetView()
     {

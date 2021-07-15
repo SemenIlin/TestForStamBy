@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2257129539283982954}
   - component: {fileID: 2257129539283982955}
   - component: {fileID: 8367140498711796264}
+  - component: {fileID: 1603659340091494554}
   m_Layer: 7
   m_Name: Kust
   m_TagString: Kust
@@ -99,3 +100,16 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.98, y: 1.1}
   m_Direction: 0
+--- !u!114 &1603659340091494554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2257129539283982957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639f5085f4adc3a40bad90f1c0420a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reward: 3

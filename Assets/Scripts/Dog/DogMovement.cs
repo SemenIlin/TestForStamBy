@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DogMovement : MonoBehaviour
 {
+    [SerializeField] float _timeForTransitionToSimple = 3f;
     [SerializeField] Dog _dog;
     [SerializeField] float _moveSpeed;
 
@@ -13,6 +14,7 @@ public class DogMovement : MonoBehaviour
     Vector2 _currentDirection;
     Vector2 _previousDirection;
 
+    float _timer;
     void Start()
     {
         _pathFinder = GetComponent<PathFinder>();
@@ -38,7 +40,9 @@ public class DogMovement : MonoBehaviour
             var pointCount = _pathToBomberMan.Count;
             if (Vector2.Distance(transform.position, _pathToBomberMan[pointCount - 1]) > 0.1f)
             {
-                transform.position = Vector2.MoveTowards(transform.position, _pathToBomberMan[pointCount - 1], _moveSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, 
+                    _pathToBomberMan[pointCount - 1],
+                    _moveSpeed * Time.deltaTime * _dog.GetCurrentView().SpeedMultiplicator);
             }
             else
             {
@@ -50,6 +54,16 @@ public class DogMovement : MonoBehaviour
         {
             _pathToBomberMan = _pathFinder.GetPath(_pathFinder.Target.position);
             _isMoving = true;
+        }
+
+        if (_dog.DogView == DogView.Angry)
+        {
+            _timer += Time.deltaTime;
+            if (_timer > _timeForTransitionToSimple)
+            {
+                _dog.ChangeView(1);
+                _timer = 0;
+            }
         }
     }
 

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class FarmerMovement : MonoBehaviour
 {
+    [SerializeField] float _timeForTransitionToSimple = 2f;
     [SerializeField] Farmer _farmer;
     [SerializeField] float _moveSpeed;
 
@@ -12,6 +13,8 @@ public class FarmerMovement : MonoBehaviour
 
     Vector2 _currentDirection;
     Vector2 _previousDirection;
+
+    float _timer;
 
     void Start()
     {
@@ -43,6 +46,7 @@ public class FarmerMovement : MonoBehaviour
             else
             {
                 _farmer.GetCurrentView().GetView(GetDirection());
+               
                 isMoving = false;
             }
         }
@@ -50,6 +54,16 @@ public class FarmerMovement : MonoBehaviour
         {
             _pathToBomberMan = _pathFinder.GetPath(_pathFinder.Target.position);
             isMoving = true;
+        }
+
+        if (_farmer.FarmerView == FarmerView.Angry)
+        {
+            _timer += Time.deltaTime;
+            if (_timer > _timeForTransitionToSimple)
+            {
+                _farmer.ChangeView(1);
+                _timer = 0;
+            }
         }
     }
 

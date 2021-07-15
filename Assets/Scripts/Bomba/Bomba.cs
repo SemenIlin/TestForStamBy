@@ -32,7 +32,6 @@ public class Bomba : MonoBehaviour
             _timerText.text = _timer.ToString();
             _time = 0;
         }
-
     }
 
     void Boom()
@@ -42,7 +41,7 @@ public class Bomba : MonoBehaviour
         _radiusBoom.ObjectsForDestory.ForEach(bomba =>Destroy(bomba));
 
         _radiusBoom.EnemyUnderBoom.ForEach(enemy => {
-            enemy.GetComponent<IEnemy>().ChangeView();
+            enemy.GetComponent<IEnemy>().ChangeView(3);
         });
     }
 

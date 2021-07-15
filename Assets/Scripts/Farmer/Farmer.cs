@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Farmer : MonoBehaviour, IEnemy
 {
-    const int QUANTITY_STATES = 3;
+    const int QUANTITY_VIEWS = 3;
 
     [SerializeField] SimpleFarmer _simple;
     [SerializeField] AngryFarmer _angry;
@@ -18,26 +18,21 @@ public class Farmer : MonoBehaviour, IEnemy
 
     public IViewFarmer GetCurrentView()
     {
-        switch (_farmerView)
+        return _farmerView switch
         {
-            case FarmerView.Simple:
-                return _simple;
-
-            case FarmerView.Angry:
-                return _angry;
-
-            case FarmerView.Dirty:
-                return _dirty;
-
-            default:
-                return _simple;
-        }
+            FarmerView.Simple => _simple,
+            FarmerView.Angry => _angry,
+            FarmerView.Dirty => _dirty,
+            _ => _simple,
+        };
     }
 
-    public void ChangeView()
+    public void ChangeView(int view)
     {
-        _farmerView += 1;
-        _farmerView = (FarmerView)Mathf.Clamp((int)_farmerView, 1, QUANTITY_STATES);
+        var result = Mathf.Clamp(view, 1, QUANTITY_VIEWS);
+        _farmerView = (FarmerView)result;
+
         GetCurrentView().GetView();
     }
+
 }

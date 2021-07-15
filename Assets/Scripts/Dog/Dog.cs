@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Dog : MonoBehaviour, IEnemy
 {
-    const int QUANTITY_STATES = 3;
+    const int QUANTITY_VIEWS = 3;
     [SerializeField] SimpleDog _simple;
     [SerializeField] AngryDog _angry;
     [SerializeField] DirtyDog _dirty;
@@ -18,25 +18,18 @@ public class Dog : MonoBehaviour, IEnemy
 
     public IViewDog GetCurrentView()
     {
-        switch (_dogView)
+        return _dogView switch
         {
-            case DogView.Simple:
-                return _simple;
-
-            case DogView.Angry:
-                return _angry;
-
-            case DogView.Dirty:
-                return _dirty;
-
-            default:
-                return _simple;
-        }
+            DogView.Simple => _simple,
+            DogView.Angry => _angry,
+            DogView.Dirty => _dirty,
+            _ => _simple,
+        };
     }
-    public void ChangeView()
+    public void ChangeView(int view)
     {
-        _dogView += 1;
-        _dogView = (DogView)Mathf.Clamp((int)_dogView, 1, QUANTITY_STATES);
+        var result = Mathf.Clamp(view, 1, QUANTITY_VIEWS);
+        _dogView = (DogView)result;
 
         GetCurrentView().GetView();
     }
@@ -44,4 +37,5 @@ public class Dog : MonoBehaviour, IEnemy
     {
         _dogView = view;
     }
+
 }
