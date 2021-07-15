@@ -1,14 +1,22 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Pig : MonoBehaviour
 {
     [SerializeField] SimplePig _simple;
     PigView _pigView;
+    Animator _animator;
     int _score;
 
     void Start()
     {
+        _animator = GetComponent<Animator>();
         _pigView = PigView.Simple;
+    }
+
+    public void ToDie()
+    {
+        _animator.SetTrigger("IsDie");
     }
 
     public PigView PigView => _pigView;
@@ -36,5 +44,4 @@ public class Pig : MonoBehaviour
     {
         _pigView = view;
     }
-
 }

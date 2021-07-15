@@ -10,9 +10,11 @@ public class Bomba : MonoBehaviour
     
     Animator _animator;
     bool _isBoom;
-
+    GameLogic _gameLogic;
     private void Start()
     {
+        _gameLogic = FindObjectOfType<GameLogic>();
+
         _animator = GetComponent<Animator>();
         _timerText.text = _timer.ToString();
     }
@@ -43,6 +45,9 @@ public class Bomba : MonoBehaviour
         _radiusBoom.EnemyUnderBoom.ForEach(enemy => {
             enemy.GetComponent<IEnemy>().ChangeView(3);
         });
+
+        _radiusBoom.Pig?.ToDie();
+        _gameLogic.GameOver();
     }
 
     public void Disactive()

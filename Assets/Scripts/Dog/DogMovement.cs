@@ -9,6 +9,7 @@ public class DogMovement : MonoBehaviour
 
     List<Vector2> _pathToBomberMan = new List<Vector2>();
     PathFinder _pathFinder;
+    GameLogic _gameLogic;
     bool _isMoving;
 
     Vector2 _currentDirection;
@@ -17,6 +18,8 @@ public class DogMovement : MonoBehaviour
     float _timer;
     void Start()
     {
+        _gameLogic = FindObjectOfType<GameLogic>();
+
         _pathFinder = GetComponent<PathFinder>();
         _pathToBomberMan = _pathFinder.GetPath(_pathFinder.Target.position);
         _isMoving = true;
@@ -24,6 +27,11 @@ public class DogMovement : MonoBehaviour
 
     void Update()
     {
+        if (_gameLogic.IsGameOver || !_gameLogic.IsStartGame)
+        {
+            return;
+        }
+
         if (_pathToBomberMan.Count == 0 && Vector2.Distance(transform.position, _pathFinder.Target.transform.position) > 0.5f)
         {
             _pathToBomberMan = _pathFinder.GetPath(_pathFinder.Target.position);

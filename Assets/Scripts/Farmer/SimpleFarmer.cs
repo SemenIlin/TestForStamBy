@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SimpleFarmer : ViewFarmer, IViewFarmer
 {
-    [SerializeField] float _speedMultiplicator;
+    [SerializeField] float _speedMultiplicator = 1f;
 
     [Header("Horizontal orientation")]
     [SerializeField] Sprite _rightMove;
