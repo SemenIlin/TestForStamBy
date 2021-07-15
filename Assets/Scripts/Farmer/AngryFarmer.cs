@@ -14,6 +14,10 @@ public class AngryFarmer : ViewFarmer, IViewFarmer
     [SerializeField] Vector2 _verticalColliderSize;
     [SerializeField] Vector2 _verticalColliderOffset;
 
+    public void GetView()
+    {
+        ChangeSprite(_currentDirection);
+    }
     public void GetView(Vector2 direction)
     {
         ChangeSprite(direction);
@@ -55,4 +59,5 @@ public class AngryFarmer : ViewFarmer, IViewFarmer
         _capsule.offset = _horizontalColliderOffset;
         _capsule.size = _horizontalColliderSize;
     }
+
 }

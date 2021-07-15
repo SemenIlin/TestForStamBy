@@ -33,14 +33,11 @@ public class Farmer : MonoBehaviour, IEnemy
                 return _simple;
         }
     }
-    public void SetNewFarmerView(FarmerView view)
-    {
-        _farmerView = view;
-    }
 
-    public void SetNextView()
+    public void ChangeView()
     {
         _farmerView += 1;
         _farmerView = (FarmerView)Mathf.Clamp((int)_farmerView, 1, QUANTITY_STATES);
+        GetCurrentView().GetView();
     }
 }

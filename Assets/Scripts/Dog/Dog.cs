@@ -33,10 +33,12 @@ public class Dog : MonoBehaviour, IEnemy
                 return _simple;
         }
     }
-    public void SetNextView()
+    public void ChangeView()
     {
         _dogView += 1;
         _dogView = (DogView)Mathf.Clamp((int)_dogView, 1, QUANTITY_STATES);
+
+        GetCurrentView().GetView();
     }
     public void SetNewDogView(DogView view)
     {

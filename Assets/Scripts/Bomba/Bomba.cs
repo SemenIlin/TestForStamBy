@@ -9,6 +9,7 @@ public class Bomba : MonoBehaviour
     [SerializeField] RadiusBoom _radiusBoom;
     
     Animator _animator;
+    bool _isBoom;
 
     private void Start()
     {
@@ -23,9 +24,10 @@ public class Bomba : MonoBehaviour
         {
             _timer -= _time;
             _timer = Mathf.Ceil(_timer);
-            if (_timer <= 0)
+            if (_timer <= 0 && !_isBoom)
             {
                 Boom();
+                _isBoom = true;
             }
             _timerText.text = _timer.ToString();
             _time = 0;
@@ -37,14 +39,16 @@ public class Bomba : MonoBehaviour
     {
         _animator.SetTrigger("IsBoom");
         _timerText.enabled = false;
-        _radiusBoom.ObjectsForDestory.ForEach(bomba => bomba.SetActive(false));
+        _radiusBoom.ObjectsForDestory.ForEach(bomba =>Destroy(bomba));
 
-        _radiusBoom.EnemyUnderBoom.ForEach(enemy => enemy.GetComponent<IEnemy>().SetNextView());
+        _radiusBoom.EnemyUnderBoom.ForEach(enemy => {
+            enemy.GetComponent<IEnemy>().ChangeView();
+        });
     }
 
     public void Disactive()
     {
         _animator.ResetTrigger("IsBoom");
-        transform.parent.gameObject.SetActive(false);
+        Destroy(transform.parent.gameObject);
     }
 }

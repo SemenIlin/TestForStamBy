@@ -10,6 +10,9 @@ public class DogMovement : MonoBehaviour
     PathFinder _pathFinder;
     bool _isMoving;
 
+    Vector2 _currentDirection;
+    Vector2 _previousDirection;
+
     void Start()
     {
         _pathFinder = GetComponent<PathFinder>();
@@ -39,7 +42,7 @@ public class DogMovement : MonoBehaviour
             }
             else
             {
-                _dog.GetCurrentView().GetView(GetDirection(pointCount));
+                _dog.GetCurrentView().GetView(GetDirection());
                 _isMoving = false;
             }
         }
@@ -50,13 +53,20 @@ public class DogMovement : MonoBehaviour
         }
     }
 
-    Vector2 GetDirection(int pointCount)
+    public Vector2 GetCurrentDirection => _currentDirection;
+    public Vector2 GetPreviousDirection => _previousDirection;
+    Vector2 GetDirection()
     {
+        var pointCount = _pathToBomberMan.Count;
         if (pointCount < 2)
         {
+            if (_currentDirection != Vector2.zero)
+            {
+                _previousDirection = _currentDirection;
+            }
             return Vector2.zero;
         }
-
-        return _pathToBomberMan[pointCount - 2] - _pathToBomberMan[pointCount - 1];
+        _currentDirection = _pathToBomberMan[pointCount - 2] - _pathToBomberMan[pointCount - 1];
+        return _currentDirection;
     }
 }

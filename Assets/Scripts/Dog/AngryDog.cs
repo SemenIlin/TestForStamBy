@@ -13,6 +13,10 @@ public class AngryDog : ViewDog, IViewDog
     [SerializeField] Vector2 _verticalColliderSize;
     [SerializeField] Vector2 _verticalColliderOffset;
 
+    public void GetView()
+    {
+        ChangeSprite(_currentDirection);
+    }
     public void GetView(Vector2 direction)
     {
         ChangeSprite(direction);

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +10,8 @@ public class FarmerMovement : MonoBehaviour
     PathFinder _pathFinder;
     bool isMoving;
 
-
+    Vector2 _currentDirection;
+    Vector2 _previousDirection;
 
     void Start()
     {
@@ -42,7 +42,7 @@ public class FarmerMovement : MonoBehaviour
             }
             else
             {
-                _farmer.GetCurrentView().GetView(GetDirection(pointCount));
+                _farmer.GetCurrentView().GetView(GetDirection());
                 isMoving = false;
             }
         }
@@ -53,13 +53,20 @@ public class FarmerMovement : MonoBehaviour
         }
     }
 
-    Vector2 GetDirection(int pointCount)
+    public Vector2 GetCurrentDirection => _currentDirection;
+    public Vector2 GetPreviousDirection => _previousDirection;
+    Vector2 GetDirection()
     {
+        var pointCount = _pathToBomberMan.Count;
         if (pointCount < 2)
         {
+            if (_currentDirection != Vector2.zero) 
+            {
+                _previousDirection = _currentDirection;
+            }
             return Vector2.zero;
         }
-
-        return _pathToBomberMan[pointCount - 2] - _pathToBomberMan[pointCount - 1];
-    }
+        _currentDirection = _pathToBomberMan[pointCount - 2] - _pathToBomberMan[pointCount - 1];
+        return _currentDirection;
+    }    
 }

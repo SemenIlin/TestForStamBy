@@ -14,9 +14,13 @@ public class DirtyFarmer : ViewFarmer, IViewFarmer
     [SerializeField] Vector2 _verticalColliderSize;
     [SerializeField] Vector2 _verticalColliderOffset;
 
-    public void GetView(Vector2 direction)
+    public void GetView()
     {
-        ChangeSprite(direction);               
+        ChangeSprite(_currentDirection);
+    }
+    public void GetView(Vector2 direction)
+    {       
+        ChangeSprite(direction);
     }
     void ChangeSprite(Vector2 direction)
     {

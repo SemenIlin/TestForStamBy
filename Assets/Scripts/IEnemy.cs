@@ -1,4 +1,4 @@
 public interface IEnemy 
 {
-    void SetNextView();
+    void ChangeView();
 }
