@@ -11,8 +11,10 @@ public class Bomba : MonoBehaviour
     Animator _animator;
     bool _isBoom;
     GameLogic _gameLogic;
+    Pig _pig;
     private void Start()
     {
+        _pig = FindObjectOfType<Pig>();
         _gameLogic = FindObjectOfType<GameLogic>();
 
         _animator = GetComponent<Animator>();
@@ -40,14 +42,24 @@ public class Bomba : MonoBehaviour
     {
         _animator.SetTrigger("IsBoom");
         _timerText.enabled = false;
-        _radiusBoom.ObjectsForDestory.ForEach(bomba =>Destroy(bomba));
+        _radiusBoom.ObjectsForDestory.ForEach(obstacles =>{
+            var kust = obstacles.GetComponent<Kust>();
+            if (kust != null)
+            {
+                _gameLogic.GetVictory();
+                if (!_gameLogic.IsGameOver && _gameLogic.IsVictory)
+                {
+                    _pig.GameOver();
+                }
+            }
+            Destroy(obstacles);
+        });
 
         _radiusBoom.EnemyUnderBoom.ForEach(enemy => {
             enemy.GetComponent<IEnemy>().ChangeView(3);
         });
 
         _radiusBoom.Pig?.ToDie();
-        _gameLogic.GameOver();
     }
 
     public void Disactive()

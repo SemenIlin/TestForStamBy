@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1621a9a5007268745a2b30022895acb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speedMultiplicator: 1.2
   _rightMove: {fileID: 1480917699468073914, guid: d59e83ad70ce06249bc0e9dbcfc1284e, type: 3}
   _leftMove: {fileID: 9118213209582376027, guid: d59e83ad70ce06249bc0e9dbcfc1284e, type: 3}
   _horizontalColliderSize: {x: 4.46, y: 2.22}
@@ -159,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db77edeba175104e8385864c8365dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speedMultiplicator: 1.7
   _rightMove: {fileID: 748373261593968425, guid: 1a2d44dd48a618943a98de3f30493d11, type: 3}
   _leftMove: {fileID: -2359721649071251821, guid: 1a2d44dd48a618943a98de3f30493d11, type: 3}
   _horizontalColliderSize: {x: 4.46, y: 2.22}
@@ -179,6 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6cdf225f4f4354db5f1449630bc420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speedMultiplicator: 0.7
   _rightMove: {fileID: 4675298679670731492, guid: c5a68a019c68f3e40a664364530c51dd, type: 3}
   _leftMove: {fileID: -6343356305408293647, guid: c5a68a019c68f3e40a664364530c51dd, type: 3}
   _horizontalColliderSize: {x: 4.46, y: 2.22}
@@ -199,8 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48fff0620a9157944afc552543089bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stepX: 1.46
-  _stepY: 1.7
   _solidLayer:
     serializedVersion: 2
     m_Bits: 960
@@ -231,5 +232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c2dfe1c55718649a4be3ac27e9cdf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeForTransitionToSimple: 3
   _dog: {fileID: 7380296009506262851}
-  _moveSpeed: 1.2
+  _moveSpeed: 1.1

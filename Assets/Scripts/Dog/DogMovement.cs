@@ -27,7 +27,7 @@ public class DogMovement : MonoBehaviour
 
     void Update()
     {
-        if (_gameLogic.IsGameOver || !_gameLogic.IsStartGame)
+        if (_gameLogic.IsGameOver || !_gameLogic.IsStartGame || _gameLogic.IsVictory)
         {
             return;
         }

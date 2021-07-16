@@ -17,9 +17,12 @@ public class PigMovement : MonoBehaviour
     Joystick _joystick;
 
     Pig _pig;
+    GameLogic _gameLogic;
 
     void Start()
     {
+        _gameLogic = FindObjectOfType<GameLogic>();
+
         _pig = GetComponent<Pig>();
         _joystick = FindObjectOfType<Joystick>();
 
@@ -28,6 +31,11 @@ public class PigMovement : MonoBehaviour
 
     void Update()
     {
+        if (_gameLogic.IsGameOver || !_gameLogic.IsStartGame || _gameLogic.IsVictory)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             // change orientation on start move

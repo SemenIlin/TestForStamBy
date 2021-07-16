@@ -2492,7 +2492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8445a64766e75c42b113bcc6a41bbd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 7
+  _speed: 7.5
 --- !u!50 &1020538067
 Rigidbody2D:
   serializedVersion: 4
@@ -3199,6 +3199,8 @@ MonoBehaviour:
   _startGameButton: {fileID: 220687780}
   _playerScoreText: {fileID: 1422154662}
   _gameOver: {fileID: 943231911}
+  _win: {fileID: 2800000, guid: d339f198faff7974f84a13173d856b94, type: 3}
+  _lose: {fileID: 2800000, guid: 13bbade07ce27e74c97434ddaf67e82a, type: 3}
   _retryButton: {fileID: 1097992941}
   _gameScreen: {fileID: 1747611369}
   _gameLogic: {fileID: 319442205}
@@ -3820,6 +3822,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1609513696}
+  - component: {fileID: 1609513697}
   m_Layer: 0
   m_Name: Kusts
   m_TagString: Untagged
@@ -3855,6 +3858,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1609513697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609513695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2dd0aae86d080742a1fa94fb069779f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1627061630
 PrefabInstance:
   m_ObjectHideFlags: 0

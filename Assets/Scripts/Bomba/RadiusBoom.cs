@@ -5,6 +5,7 @@ public class RadiusBoom : MonoBehaviour
 {
     List<GameObject> _objectForDestroy = new  List<GameObject>();
     List<GameObject> _enemyUnderBoom = new List<GameObject>();
+
     Pig _pig;
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -8,6 +9,7 @@ public class Pig : MonoBehaviour
     Animator _animator;
     int _score;
 
+    public event Action ShowGameOwerEvevent;
     void Start()
     {
         _animator = GetComponent<Animator>();
@@ -43,5 +45,10 @@ public class Pig : MonoBehaviour
     public void SetNewPigView(PigView view)
     {
         _pigView = view;
+    }
+
+    public void GameOver()
+    {
+        ShowGameOwerEvevent?.Invoke();
     }
 }
